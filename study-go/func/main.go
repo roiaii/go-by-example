@@ -44,6 +44,19 @@ func fibonacci(n int) int {
 	return fibonacci(n-1) + fibonacci(n-2)
 }
 
+/*
+*
+函数类型的学习：
+函数类型：是指定输入参数和返回值的一组规则
+*/
+// 定义一个函数类型
+type MyFunctionType func(int, int) (int, error)
+
+// 使用函数类型声明一个变量
+var fn MyFunctionType = func(a, b int) (int, error) {
+	return a + b, nil
+}
+
 func main() {
 	res1 := plus(1, 2)
 	fmt.Println("1 + 2 =", res1)
@@ -74,5 +87,9 @@ func main() {
 
 	res3 := fibonacci(5)
 	fmt.Println(res3)
+
+	fmt.Println("========函数类型===")
+
+	fmt.Println(fn(1, 1))
 
 }
