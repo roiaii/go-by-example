@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 func plus(a int, b int) int {
 	return a + b
@@ -57,6 +60,10 @@ var fn MyFunctionType = func(a, b int) (int, error) {
 	return a + b, nil
 }
 
+var fn2 MyFunctionType = func(a, b int) (int, error) {
+	return a, errors.New("函数类型处理错误")
+}
+
 func main() {
 	res1 := plus(1, 2)
 	fmt.Println("1 + 2 =", res1)
@@ -91,5 +98,7 @@ func main() {
 	fmt.Println("========函数类型===")
 
 	fmt.Println(fn(1, 1))
+
+	fmt.Println(fn2(1, 2))
 
 }
